@@ -1,0 +1,414 @@
+d5 $ sound "bd sd hh cp mt arpy drum odx bd arpy bass2 feel future"
+
+d5 silence
+
+d1 $ sound "[bd bd] [bd [sd [sd sd] sd] sd]"
+
+d1 $ sound "bd bd . sd sd sd . bd sd"
+
+d2 $ sound "[bd bd, sd cp . sd cp, arpy [arpy arpy], [arpy cp] arpy, odx future odx]"
+
+d3 $ sound "sn hh [arpy:1 arpy:2 arpy:3]"
+
+d2 $ sound "bd:4*3 ~" # crush "13"
+
+d4 $ sound "[[bd sn] cp]*3"
+
+d4 silence
+
+d4 $ sound "dn [[sn bd] cp] dn"
+
+d2 $ every 4 (rev) (sound "[bd [sn sn]*3]/2 bd [bd [sn bd]*2]/2 bd sn") # speed 33
+
+solo $ d1 $ sound "bd sn"
+
+d1 $ slow 2 $ sound "bd*2 [bd [sn sn*2 sn] sn]"
+
+d1 $ every 4 (fast 9) $ sound "[bd [sn sn*2 sn]sn]"
+
+d1 $ sound (every 4 (fast 4) "bd*2 [bd [sn sn*2 sn] sn]")
+
+hush
+
+d1 $ sound "bd*16" # crush "4" # speed"1 3 5 7 9 10 14 19 30 40 50"
+
+d2 $ sound "bd*4, [sn[sn sn] sn]" # gain (every 3 (rev) $ "[[1 2 [5 7]]]")
+
+d4 $ crush "1 3 5 7 9 10 15 17 30 20 40 10 10 10" # sound "bd"
+
+d4 $ every 4 (|+| speed "9") $ sound "arpy*4" |=| speed "1"
+
+d4 $ every 2 (|*| speed "1.5") $ sound "bd*4" |=| speed "1"
+
+d2 silence
+
+d5 $ every 3 (|-| up "8") $ every 2 (|+| up "3") $ sound "arpy*4" |=| up "0 2 4 5"
+
+d2 silence
+
+d2 $ sound " bd sn db supergong [sn sn] sn [sn sn] "
+
+d2 $ sound "arpy(3, 8)" # n ("2 5" * 0.2)
+
+d1 $ n (off 0.125 (+12) $ off 0.25 (+7) $ slow 2 $ "0(3,8) [5 7]") # sound "supergong"
+
+d1 $ n "[0 1 7] [3 2 1 0 -1][ 3 2 1]" # sound "supergong"
+
+d5 $ every 3 rev (n "0 1 [34 35 36 37 38 39] 2 23 [50 49 48 47 46 45 44 43 42 41]" # sound "supergong" |=| speed "0.3")
+
+d2 $ sound "cp <bd bd bd>"
+
+d3 $ sound "sn [sn sn sn]/2 sn"
+
+d3 silence
+
+d1 $ sound "arpy(3, 8)" # n (every 4 (*2) "0 2")
+
+d1 $ n (off 0.125 (+12) $ off 0.25 (+7) $ slow 2 $ slow 2 $ "0(3,8) [5, 7]") # sound "supergong"
+
+hush
+
+d1 $ sound "arpy" # speed "[1, 1.5]"
+
+d1 $ speed "[1 1.05, 1.5 2 3 4]" # sound "arpy"
+
+d4 $ up "0 1 2 3 4 5 6 7 8 9 10 11" # sound "arpy"
+
+d4 $ up (run 16) # sound "arpy" # crush (slow 2 $ tri)
+
+d4 $ up "12 11 10 9 8 7 6 5 4 3 2 1" # sound "arpy" # crush 1
+
+-- Euclidian sequences
+
+cps  (180 / 60 / 4)
+
+
+d1 $ slow 4 $ sound "bd(5, 8) bd sn(5, 8)"
+
+d1 $ sound "bd(5, 8)"
+
+d1 $ e 5 8 $ sound "bd [sd sd] bd"
+
+d1 $ sound "cp bd  [sd [sd sd]] bd "
+
+d2 $ sound "hh*4"
+
+d2 $ e 3 8 $ sound "bd([5 3]/2, 8) sd(3, 4)"
+
+d1 $ e 5 8 $ sound "bd"
+
+d2 silence
+
+hush
+
+-- Tempo -- is in cycles per second below a 4 beat per cycle 140bpm is calculated --
+cps (1)
+
+-- algorhythmically selecting samples
+
+d1 $ sound "arpy*8" # up (run 8)
+
+d1 $ sound "arpy*8" # speed (run 8)
+
+d1 $ up (run 8) # sound "arpy"
+
+d1 $ sound "arpy:0 arpy:2 arpy:3"
+
+d1 $ n "0 2 3" # s "arpy"
+
+d1 $ sound $ samples "drum*7" "0 1 2 3 4 5 7"
+
+d1 $ n (run 4) # s "drum"
+
+d1 $ sound $ samples "drum*4" (run 4)
+
+d1 $ s "drum arpy cp hh" # n (run 10)
+
+d1 $ n (run 10) # s "drum arpy cp hh"
+
+d2 $ sound (samples "drum*12" (run 10))
+
+d1 $ sound "hh sn sd bd cp bd ~ sd ~ cp ~ bd cp sn"
+
+cps 0.5
+
+hush
+
+d1 silence
+
+-- combining types of patterns --
+
+d1 $ sound "bd*4 sn sd" # pan "0 1 0.25 0.75"
+
+d1 $ pan "0 1 0.25 0.75 0.5 0.3 0.5 " # sound "bd sn bass2 cp hh bd bass2"
+
+d1 $ up "-1 0*2 4*4 2" # sound "[arpy, bass2, bd ~ bd]"
+
+-- Continuous Patterns
+
+d1 $ sound "bd*16" # pan saw
+
+d1 $ sound "bd*16" # pan (slow 8 $ saw)
+
+d1 $ sound "bd*8 sn*8" # crush (density 6 $ tri*10)
+
+d1 $ sound "bass2*4" # speed (slow 20 $ tri*8)
+
+d1 $ sound (samples "drum*16" (run 10)) # pan (slowcat [sine, saw, square, tri])
+
+-- set scale mapping for oscillator
+d1 $ sound "sn:2*16" # speed ((scale 0.5 3 sine) * slow 4 saw)
+
+
+d1 $ sound "bd*8 sn*8" # speed (scale 1 3 $ tri)
+
+d1 $ sound "bd*8 sn*8" # crush (slow 10 $ scale 1 10 $ tri)
+
+d2 silence
+
+
+-- make sure to wrap negative values in parens otherwise intepreter reads as subtraction
+d3 $ sound "bd*8 sn*6" # speed (scale (-2) 8 $ tri)
+
+-- cutoff is a low pass filter
+d1 $ sound "hh*32" # cutoff (scale 300 1000 $ fast 3 $ sine) # resonance "0.4"
+
+d1 $ fast 4 $ sound "bd bd ~ bd ~ hh"
+
+-- Polymeters
+d1 $ fast 2 $ sound "{bd hh sn can cp, arpy bass3 ~ notes can ~ can}"
+
+d1 $ fast 2 $ sound "{bd:9 hh ~ ~ hh, notes bass2 bd ~ bd bass2}"
+
+d1 $ sound "{~ ~ ~ ~, arpy bass2 drum notes can}"
+
+d1 $ sound "{arpy bass2 drum notes can}%4"
+
+-- Shifting Time
+
+d1 $ every 3 (0.25 ~>) $ sound "bd*2 cp*2 hh sn"
+
+d1 $ every 3 (0.75 <~) $ sound "bd*2 cp*2 hh sn"
+
+d1 $ every 3 (0.0625 <~) $ sound "bd*2 cp*2 hh sn"
+
+d1 $ every 3 (1000 ~>) $ sound "bd*2 cp*2 hh sn"
+
+d1 $ every 3 (1000.125 ~>) $ sound "bd*2 sn*2 hh cp"
+
+d1 $ "[0 0.25 0]/4" <~ (sound "popkick*2 realclaps*2 bottle/4 sn") # speed 3
+
+-- RANDOMNESS --
+
+d1 $ sound "notes*8" # speed  (rand)
+
+d1 $ sound "arpy*4" # speed (scale 0.25 0.75 $ rand)
+
+-- irand selects random interger up to a given max
+d1 $ s "drum*8" # n (irand 30)
+
+-- ? gives 50/50 chance of note being removed each cycle
+d1 $ sound "bd? popkick sd? sd?"
+
+d1 $ sound "bd*16?"
+
+d1 $ sound "bd sn? cp hh?"
+
+d1 $ sound "[bd sn cp hh]?"
+
+d1 $ degrade $ sound "bd*16" -- equiv to ----->      d1 $ sound "bd*16?"
+
+d1 $ degradeBy 0.95 $ sound "bd*16" -- degradeBy specifies possibility event will be removed from patterns
+
+d1 $ sometimesBy 0.75 (# crush 4) $ sound "bd arpy sn ~" -- sometimesBy executes function based on given probabality
+
+-- other aliases for sometimesBy
+
+sometimes = sometimesBy 0.5
+often = sometimesBy 0.75
+rarely = sometimesBy 0.25
+almostNever = sometimesBy 0.1
+almostAlways = sometimesBy 0.9
+
+d1 $ rarely (# crush 4) $ sound "{bd*6, ~ ~ sn:3}"
+
+hush
+
+----------------------------------------------------------------------------
+
+-- CREATING VARIATION IN PATTERNS
+
+d1 $ every 5 (|+| speed "0.5") $ every 4 (0.25 <~) $ every 4 (rev) $
+sound "bd sn arpy*2 cp"
+# speed "[1 1.125 [0.75 -1.5]]/3"
+
+
+-- whenmod takes two parameters; it executes a function when the remainder of the current loop number divided by the first parameter is greater or equal than the second parameter.
+d1 $ whenmod 8 6 (rev) $ sound "bd arpy*2 bd [hh*3] sn popkick popkick:10"
+
+hush
+
+----------------------------------------------------------------------------
+
+-- Creating "Fills" and using "const"
+
+d1 $ every 8 (rev) $ every 4 (fast 2) $ sound "popkick:4 hh:9 sn:4 cp:3"
+
+d1 $ whenmod 16 14 (# speed 2 # crush 4) $ sound "popkick sn sn:3 jungbass:4/2"
+
+d1 $ whenmod 8 7 (const (sound "popkick*3")) $ sound "gabba sn:8 cp hh"
+
+d1 $ every 2 (const $ sound "popkick*4 hh:4*2") $ sound "gabba sn bass3: sn"
+
+hush
+
+----------------------------------------------------------------------------
+
+-- COMPOSITING PART PATTERNS --
+
+-- u can use fastcat to add patterns one after the other --
+
+d1 $ fastcat [sound "popkick sn:2" # vowel "[a o]/2",
+              sound "casio casio:1 casio:2*2",
+              sound "bd bd bd bd sn sn sn sn sn sn"
+             ]
+
+d1 $ fastcat [sound "bd sn:2" # vowel "[a o]/2",
+              sound "casio casio:1 casio:2*2",
+              sound "drum drum:2 drum:3 drum:4*2"]
+
+d1 $ cat [sound "bd sn:2" # vowel "[a o]/2",
+              sound "casio casio:1 casio:2*2",
+              sound "drum drum:2 drum:3 drum:4*2"]
+
+d1 $ randcat [sound "popkick bass0 bass0",
+              sound "bass0 popkick bass0",
+              sound "hh hh sn bass3:4 bass3:4 sn"]
+
+-- PLaying patterns together in parallel
+
+d1 $ stack [
+    sound "popkick:9*3",
+    sound "hh*2 sn:4 sn:3",
+    sound (samples "arpy*8" (run 16)) # crush (slow 4 $ scale 2 8 $ tri) # speed 0.8
+]
+
+d1 $ every 4 (slow 2) $ whenmod 5 3 (# speed " 0.75 1.5") $ stack [
+  sound "bd bd*2",
+  sound "hh*2 [sn cp] cp future*4",
+  sound (samples "arpy*8" (run 16))
+] # speed "[[1 0.8], [1.5 2]*2]/3"
+
+hush
+
+-- CUT CUT CUT CUT --
+
+d1 $ sound (samples "bass3*8" (run 8)) # speed 9 # cut 1 # resonance (scale 0 3 sine1)
+
+d1 $ sound (samples "arpy*8" (run 8)) # speed 0.25 # cut 1
+
+d2 $ sound (samples "bass2*6" (run 6)) # speed 0.5 # cut 2
+
+d1 $ stack [
+  sound (samples "arpy*8" (run 8)) # speed 0.25 # cut 1,
+  sound (samples "bass2*6" (run 6)) # speed 0.5 # cut 2
+]
+
+d1 silence
+
+hush
+
+-----------------------------------------------------------------------------
+
+-- TRANSITIONS BETWEEN PATTERNS --
+
+d1 $ sound (samples "hc*8" (iter 4 $ run 4))
+t1 anticipate $ sound (samples "bd(3, 8)" (run 3))
+
+
+t1 (xfadeIn 16) $ sound "bd(5, 8)"
+
+-- ???????????????????????????????????????????????????????????????????????? --
+
+-----------------------------------------------------------------------------
+
+-- SAMPLES --
+
+d2 $ stack [
+  sound "~ gabba:3 ~ gabba:3 sd" # speed 1.3 # cut 1,
+  sound "newnotes ~ stab",
+  sound "tabla ~ tabla ~ ~",
+  sound (samples "mouth*8" (run 8)),
+  sound "rave:3/3",
+  sound (samples " ~ ~  ~ ~ ~ sd*5" (run 8))
+] -- # speed "[[1 0.8], [1.5 2]*2]/3"
+
+d2 $ slow 2 $ sound (samples "pluck*17" (run 17)) # speed 0.9
+
+-----------------------------------------------------------------------------
+
+-- SYNTHS --
+
+d1 $ midinote "56 56 23" # s "supersaw"
+
+d1 $ n "c5 d5*2 e#5 " # s "supersaw" # cutoff 2000 # cut 1
+
+d1 $ slow 4 $ every 4 (rev) (n "c5 d5 e5 f5 g5 a5 b5 c5" # s "supersaw")
+
+d2 $ n "<[a5,cs5,e5,g5]*3 [d5,fs5,g5,c5]>" # s "supersquare"  # gain "0.7"
+
+d3 $ every 8 (rev) $ n "<[g5 df5 e5 a5] [gf5 d5 c5 g5]*3>" # s "supersaw"
+
+d3 silence
+
+d1 $ n "0 5 6 8 -4 5 ~ 2" # s "supersaw"
+
+d2 $ n "c5 d5*2 c4 c5 c4 c5" # s "superkick" # sustain "0.44 0.2"
+
+d4 $ n (slow 4 $ "[[c4,e4,g4,c5]*4 [e4,g4,b5,e5]*4]" + "<12 7>") # s "superpiano"
+  # velocity (slow 8 $ scale 0.8 1.1 sine1) # gain 1
+
+d2 silence
+
+d2 $ stack[
+  sound "hardkick:2/4" # speed 0.3 # sustain 3,
+  sound "hardkick:3*4" # resonance 0.5,
+  sound "hh*8" # room 0.9 # cut 3
+] # gain 1
+
+t2 (xfadeIn 16) $ stack [
+  sound "hardkick*4" # gain 1,
+  sound "~ [~ sn] ~ sn]"
+]
+
+
+
+
+
+hush
+
+
+-- other random stuff --
+
+d2 $ every 3 (0.25 <~) $ sound "gabba gabba gabba sn:6" # speed 1
+
+d2 $ sound "gabba/4" # speed 0.2
+
+d2 $ sound "notes notes  ~ ~ notes notes notes notes ~  notes" # speed (slow 10 $ scale (-6) 13 $ tri)
+
+d3 $ sound "xmas:1"  # speed (scale (-0.2) (-1) $ slow 3 sine)
+
+d3 $ sound "bd bd bd bd bd" # vowel "a e i o u" # gain 1 # room 0.3
+
+d3 silence
+
+d2 $ sound "breaks165/1.45" # gain 2 --  # vowel "
+
+cps 1
+
+hush
+
+-- sounds like the sea --
+d5 $ s "supernoise/8" # n ((irand 10) + 30) # sustain "8"
+ # accelerate "0.5" # voice "0.5" # pitch1 "0.15" # slide "-0.5" # resonance "0.7"
+ # attack "1" # release "20" # room "0.9" # size "0.9" # orbit "1" # gain 0.5

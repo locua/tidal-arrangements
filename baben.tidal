@@ -1,0 +1,72 @@
+d2 $ slow 2 $ whenmod 9 2 (# speed "1 2.2 1.4 0.8 1.4 1.3 0.8" )
+$ jux (iter 4) $ stack [
+  sound (samples "uxay*4" (every 7 (fast 2 ) $ run 32)),
+  sound " ~ [sn*8]/2" # speed "0.5 0.4 0.3 0.2 0.1 0.5" # coarse 20 # vowel "a"
+]
+# room 0.4 # gain 1.5
+# coarse 5 # crush 10
+|=| speed 1
+-- #cutoff 1000
+
+d3 $ sound ""
+
+d6 $ n "c3/3" # s "supersquare"
+# sustain 2 # room 0.4 # accelerate (-1)
+
+d1 $ sound ""
+
+hush
+
+d4 $ slow 2 $ every 8 (rev) $ sound (samples "babenG" (every 8 (fast 6) $ run 6))
+# speed 0.96 # room 0.7 # pan (fast 4 $ sine1) -- # accelerate (-0.7)
+# room 0.4 # speed 1 # gain 1.5
+
+d1 $ sound (samples "babenG/2" (irand 9))
+
+
+  import Sound.Tidal.MIDI.Context
+
+  displayOutputDevices >>= putStrLn
+
+
+devices <- midiDevices
+
+
+m1 <- midiStream devices "reface CP MIDI 1" 15 synthController
+
+m1 $ note "0 2 6 8 5 4"
+
+hush
+
+d3 $ sound "drops" # gain 0.6
+
+d1 $ sound "~ sn" # speed 1 # gain 2
+
+
+d4 silence
+
+hush
+
+d4 $ every 1 (# accelerate (-2)) $ every 8 (jux (striate' 32 0.02)) $ slow 2
+$ sound (samples "babenG/2" (irand 4)) # room 0.4 # speed 0.2 # gain 2
+--   # speed "1 1 1 1.2" # vowel "i" #
+
+
+
+d1 $ sound "babenG:8/3" # speed 0.6 # gain 1.5 # accelerate (-0.5) # room 0.6
+
+d2 $ sound "gabba*4?" # speed 0.5
+
+
+d4 $ sound
+
+hush
+
+
+d1 $ sound "paul"
+
+d1 $ sound "paul/10 bjoo/4" # unit "c" # speed 0.2 # accelerate (-2) # room 0.7
+
+d4 $ swingBy (1/3) 4 $ slow 4 $ every 3 (rev) $ sound (samples "baben1*8" (every 3 (fast 2) $ run 6))
+# room 0.5 # delay 0.4 # vowel "a" # gain 1.3 # speed "1.2 1 1 0.9 1 1"
+# pan "0 1 0 1 0 1"

@@ -1,0 +1,494 @@
+
+d2 $ sound "bev?" # cut 1 # coarse 4 # gain 1.3 # speed "0.8 0.6 1 0.9" # crush 8 # room 0.8 -- # speed 2
+
+-------------------------------------------------------------------------------------------------------
+d9 $ slow 1 $ every 4 (chop 10) $ every 6 (# accelerate (-1)) $ randcat [
+      sound (samples "drum*8" (irand 10)),
+      sound (samples "hardkick*4" (irand 5)),
+      sound (samples "splicedbb*8" (irand 10)),
+      stack [sound "gabba*4", sound (samples "lsti*8" (irand 10))] # crush 3
+] # room 0.4
+-------------------------------------------------------------------------------------------------------
+
+d1 $ fast 3 $ sound (samples "amencutup*8" (irand 8))
+
+d3 silence
+
+hush
+
+d2 $ n "c3/4" # s "supercomparator" # sustain 2 # room 0.4 # delay 2
+
+d2 $ stack [sound "gabba*4" # speed "1.2", sound (samples "uxay*8" (irand 10)) # speed "0.8 1.9 0.86 0.89"] # crush 9
+
+d5 $ slow 1
+$ every 17 (|-| speed " 4 3 2 2 28 4 3 4 5 3 3")
+$ every 3 (rev)
+(striate' 16 0.2 $ sound "bjoo:1/4" )
+|=| speed "{3 4 5 4 ~ 3  9 ~ 5 ~ 6 7 8 4 5  7 3  2 ~ 1 2 ~ 3 4.3 ~ 5.5 ~ 1 4 4 2 3, 1 2 3 4}"
+|=| cut 4
+|=| room 0.5
+|=| shape 0.4
+|=| cutoff 1000
+
+-- tututututut --
+hush
+
+d2 silence
+
+
+
+-------------------------------------------------------------------------------------------------------
+-- ~~ anohnicore  ~~ --
+----- it works at 200 bpm -----
+d5 $ slow 6
+   $ every 4 ( 0.25 <~)
+   $ every 2 (rev)
+   $ slowcat [
+  striate' 32 (1/16) (sound "anton:0"),
+  striate' 32 (1/16) (sound "anton:1") # vowel "a e i o u",
+  sound (samples "drumcut*32" (every 4 (fast 2) $ fast 8 $ run 64))
+] -- # hcutoff (scale 1000 2000 sine1 * tri) # room 0.1 -- # crush 5
+
+d2 $ sound "anton/4" # cut 4 # hcutoff 500
+-----------------------------------------------------------------------------------------------------------------------
+
+d4 $ slowspread ($) [(|+| accelerate "-1 1"), (|+| coarse "16 12 3"), chop 12] $ slowcat [
+        sound (samples "sine*8" (irand 2)) # speed "1 2 3 4 2 1 2 2 3 4 2 1 1 1 8 3",
+        sound (samples "sine*8" (irand 2)) # speed "12 20 3 5 7 8 4 1 1 0.8 0.9 0.6 3",
+        sound (samples "sine*8" (irand 2)) # speed "1 2 3 4 2 12 9 8 7 41 8 3",
+        sound (samples "sine*8" (irand 2)) # speed "0.71 0.82 0.63 0.54 0.42 0.412 0.6 90 80 70 41 8 3"
+] # gain 1.4 # legato 2 # room 0.7 # hcutoff 1600
+
+d4 silence
+
+d5 $ slow 1 $ slowcat [
+        sound (samples "sine*8" (irand 2)) # speed "1 2 3 4 2 1 2 2 3 4 2 1 1 1 8 3",
+        sound (samples "sine*8" (irand 2)) # speed "12 10 3 5 7 8 4 1 1 0.8 0.9 0.6 3",
+        sound (samples "sine*8" (irand 2)) # speed "1 2 3 4 2 12 9 8 7 9 8 3",
+        sound (samples "sine*8" (irand 2)) # speed "0.71 0.82 0.63 0.54 0.42 0.412 0.6 90 80 70 41 8 3"
+] # gain 1.4 # legato 2 # room 0.7 # hcutoff 1600
+|=| pan " 0 1 0 1 0 1 0 0 0 1 0 1 0 0 1 0 1 0.5 0.3"
+
+hush
+
+d3 silence
+
+-----------------------------------------------------------------------------------------------------------------------
+
+*** https://soundcloud.com/hellodav3 ***
+
+d3 $ whenmod 4 32 (rev)
+$ every 4 (|+| accelerate 2)
+$ every 3 (|+| coarse 7)
+$ every 4 (0.25 <~)
+$ every 8 (|+| accelerate (-2))
+$ randcat [
+  sound (samples "drum*8" (irand 8)) # cut 1 # gain 1.2,
+  sound (samples "drops? gabba*4" (irand 4)) # room 0.7 # speed 2,
+  sound "happ, nostmix*4" # room 1 # speed (1) # sustain 2,
+  sound "gabba*8" # speed "1 4 7 3 2 4",
+  sound (samples "gabba*3 sd:0(3,8)" (irand 10)),
+  stack [
+    sound (samples "drum*8" (irand 8)) # cut 1 # gain 1.2,
+    sound (samples "drops?" (irand 4)) # room 0.7 # speed (irand 6),
+    sound "happ/8" # room 1 # speed (-1) # sustain 2
+  ],
+  stack [
+    sound (samples "nostmix*8" (irand 38)) # cut 1 # gain 1.2,
+    sound (samples "drops?" (irand 4)) # room 0.7 # speed (irand 6),
+    sound "happ/8" # room 1 # speed (-1) # sustain 2
+  ],
+  stack [
+    brak $ sound (samples "hardkick*6 ~ ~" (irand 7)),
+    brak $ sound (samples " ~ ~ ~ ~ sn:8*7" (irand 10))
+  ],
+  sound (samples "amencutup*8" (irand 7))
+]
+|=| gain 1.2
+|=| accelerate 0
+|=| coarse 0
+
+hush
+
+d1 $ every 4 (striate' 32 0.05) $ sound "bd sn sn sn" # room 1
+
+d2 $ n "ds3" # s "supercomparator"
+
+----------------------------------------------------------------------------------------------------------------
+
+d1 $ every 10 (# accelerate (-0.2)) $ every 3 (# speed 0.4) $ brak
+$ (striate' 8 0.1 $ sound "spat:0/2") # unit "c" # speed 0.5
+|=| room 0.9
+|=| gain 1.2
+|=| hcutoff 1200
+-- IGNORE FOR TONIGHT --
+
+---------------------------------------------------------------------------
+d1 $ brak
+$ sound "spat:0/2" # unit "c" # speed 0.01
+|=| room 0.9
+|=| gain 1.2
+|=| hcutoff 1200
+
+d2 silence
+
+d2 $ stack [
+  brak $ sound (samples "nostkick*3 nostkick*2 " (irand 10)),
+  every 8 (striate' 18 0.1) $ sound (samples "~ nostsns*5" (irand 10)),
+  every 4 (# accelerate (-1)) $ sound "bass2?"
+]
+
+hush
+
+d3 $ stack [
+  sound (samples "oxo*8" (every 4 (fast 2) $ every 6 (slow 2) $ run 15)),
+  every 4 (# accelerate(-2)) $ sound (samples "bjoo" (irand 8)) # room 0.4
+] # gain 2 # hcutoff 1200
+
+
+
+
+hush
+-----------------------------------------------------------------------------------------------------------------
+
+d1 $ slow 4 $ every 8 (# accelerate (1.1)) $ sound "fone/4" # unit "c"
+# speed 0.5
+# gain 1.1
+# room 0.7
+
+-----------------------------------------------------------------------------------------------------------------
+
+d1 $ every 4 brak $ slow 2 $ sound "trncoo/2 drops trncoo" # cut 2 # speed " 2 0.3 0.4  0.7 4 "
+
+d1 $ slowspread ($) [(|+| accelerate "-1 1"), (|+| coarse "16 12 3")] $ sound "trncoo/2"
+# room 1 # cut 2 # gain 1.2
+
+--------------------------------
+
+d1 $ sound (samples "nostmix*8" (irand 32)) -- # speed 0.06
+
+
+hush
+
+cps(120/60/4)
+
+d1 $ sound "gabba"
+---------------------------------------------------------------------------------
+
+d3 $ every 8 (rev)
+$ every 19 (striate 32)
+$ almostNever (chop 8)
+$ rarely (# coarse 8)
+$ almostNever (stut 4 0.5 0.2)
+$ every 10 (# accelerate "(-1) 1")
+$ every 29 brak
+$ stack [
+      every 6 (|-| speed 0.5) $ sound (samples "drum*8" (every 4 (fast 8) $ slow 1 $ run 38)) # speed "1 2 4 6 3 0.7 0.8 0.8 0.8 0.8 2 1.2 1.1 1.3 3",
+      every 6 (# accelerate (-1)) $ sound (samples "drops/3" (irand 3)) # speed "9 8 20 22 0.8 0.4" # cut 1 # room 0.5,
+      -- sound (samples "sythchp*6? ~ ~ sythchp" (irand 4)) # cut 1 # speed "1 2 6 0.7 8 4.5 3 3.5 6.5 9 0.5" # room 0.5,
+      -- sound "happ/12?" # cut 2 # coarse 4 # room 0.4,
+      every 20 (# accelerate (-1)) $ sound (samples "booj?" (irand 4)) # room 0.5 # hresonance 0.1 # gain 1,
+      sound "yeah/4" # cut 2  # speed 0.7
+      -- sound (samples "sine*12" (irand 3)) # speed "1 2 3 5 6 8 4 3 6 3 23 5 3 211 1 2 3 45" # speed 1.3 # gain 0.7 # room 0.6,
+      -- sound (samples "booj*2" (run 2)) # speed (fast 2 $ scale 2 3 $ tri*sine1*square)
+] |=| pan " 0.5 0.4 1 0.6 0.8 0.4 0.53 0.23 1 0.7 0.47 0.41 0.5 1 0.56"
+
+d1 $ sound "drops"
+
+d1 silence
+
+
+hush
+
+d1 $ n (scale 0 10 $ tri*sine1*square) # s "superzow" # room 0.5 # nudge "[0.08 0]*4" -- # delay "1 2 4 4"
+
+d3 silence
+
+d1 $ every 6 (|-| speed 0.5) $ sound (samples "nostmix*8" (every 4 (fast 8) $ slow 1 $ run 38))
+# speed "1 2 4 6 3 0.97 0.98 0.8 0.93 0.93 2 1.2 1.1 1.3 3"
+
+hush
+
+d2 $ every 8 (|+| speed "1 1.2 0.9") $ slow 3 $ sound (samples "booj*3" (run 5)) # room 0.3
+|=| speed 1
+
+d2 $ whenmod 7 19 (scramble 20) $ every 4 brak $ every 8 (0.25 <~) $ stack [
+    every 12 (smash 4 [2,3,4]) $ every 9 (# speed "1 2 3.5 3.7 4.3 2.9 2.7 2.6 2.1 1.7") $ sound (samples "amencutup*8" (irand 8)) # cut 1 # gain 1,
+    -- sound (samples "drops?" (irand 4)) # room 0.7 # speed 2,
+    -- every 6 brak $ every 4 (scramble 9) $ every 7 (# accelerate (-1)) $ sound (samples "~ fone*2?"(irand 7)) # room  0.5 # cut 3 # unit "c" # speed 0.5,
+    every 20 (scramble 8) $ sound (samples "808lt*6?" (run 32))-- # speed "1 2 3 4 5 7 8 9 8 6 5 7 8 2" # resonance 0.7 # crush 3 # coarse 9 # room 0.5  # gain 0.85
+]
+
+d1 $ every 5 (smash 4 [2,3,4]) $ sound (samples "drumcut*8" (irand 7))
+
+d2 $ slow 2$weave 16(pan sine1)$ map sound["[[odx*4[odx*2odx*8],[hh*4,~odx/12]*4],[blue/1]/2~~[~odx/13*2]]",(1/16)~>samples"jvbass*16""2 2[3 4]1"]
+
+hush
+
+
+
+
+
+d1 $ sound "pulse"
+
+
+hush
+
+import qualified Sound.Tidal.Scales as Scales
+
+-----------------------------------------------------------------------------------------------------------------
+
+d2 $ stack [
+      sound (samples " ~ ~ nosthat ~ ~ nosthat*3" (irand 20)),
+      sound (samples "nostkick" (every 5 (fast 3) $run 10)),
+      sound (samples "nostmix*8" (irand 38)), --(fast 1 $ run 38)),
+      sound (samples "drum*8" (irand 30)),
+      scramble 12 $ sound ("happ/4") # cut 3
+]
+-----------------------------------------------------------------------------------------------------------------
+
+d1 $ stack [
+     slow 2 $ sound (samples "v*8 ~ ~ ~" (irand 20)),
+     sound (samples " ~ ~ ~ bjoo:5/2? ~ ~ ~"(irand 3)),
+     sound "~ drum [~ drum] ~ ",
+     -- sound (samples "nostmix*8" (irand 38))
+]
+
+d1 silence
+
+-----------------------------------------------------------------------------------------------------------------
+hush
+
+d3 $ sound "bjoo/4" # gain 1.6 # room 0.6 # accelerate 1
+
+d2
+$ slow 1
+$ every 4 (# accelerate (-1))
+$ every 8 brak
+$ every 12 (scramble 3)
+$ slowcat [
+n "e5 d4 e5 g5" # s "supercomparator",
+n "f4 e4 f4 a4" # s "supercomparator",
+n "d6 e6 g6 a5 ~ a4" # s "supercomparator",
+n "c5,e5,g5 f5,a5,c6" # s "supercomparator"
+] # room 0.5
+  # hresonance 0.3
+  # nudge "[0 0.04]*4"
+  # legato " 0.9 0.2 0.3 1 0.2"
+  # hcutoff (scale 700 1500 sine1*tri)
+  # gain 1.
+
+
+  d2 $ sound "drops" # speed 9
+
+  d2 silence
+
+  hush
+
+d2 $ fast 8
+$ every 4 (# accelerate (1))
+$ every 8 brak
+$ every 12 (scramble 3)
+$ every 8 (|+| speed 0.3)
+$ every 4 (# accelerate 1.2)
+$ every 8 (|+| hresonance 1)
+$ randcat [
+   n "e5 d4 e5 g5" # s "superzow",
+   n "f4 e4 f4 a4" # s "superzow",
+   n "d6 e6 g6 a5 ~ a3" # s "superzow",
+   n  "c5,e5,g5 f5,a5,c6" # s "superzow" # coarse 3 # sustain 1.2 # vowel "a e" # accelerate 2
+] # nudge "[0 0.04]*4" # hcutoff (scale 700 1500 sine1*tri)
+|=| hresonance 0.3
+|=| room 0.5
+|=| gain 0.7
+
+d1 $ slowcat [ stack [
+  sound "sn*3 ~" # speed 0.1 # nudge "[0.01 0]*5",
+  sound " ~ bass2:1" # speed 1 -- # coarse 5
+], stack [
+  sound "hh:8*10" # speed 0.9 # room 0.6,
+  sound "sn*2 ~ sn" # speed 0.1
+]
+]
+
+d1 $ stack [
+  sound "sn sd:3/4",
+  sound "hh(5,8)"
+] # nudge "[0 0.02]*4"
+
+
+hush
+
+d3 $ sound "baben"
+
+
+hush
+
+cps 1
+
+t2 (xfadeIn 2) $ every 28 (# accelerate (-2)) $  slow 4 $ slowcat [
+  sound "baegu:0" # unit "c" # speed 0.25,
+  sound "baegu:1" # unit "c" # speed 0.25,
+  sound "baegu:2" # unit "c" # speed 0.25,
+  sound "baegu:3" # unit "c" # speed 0.25
+] # room 0.5
+
+d1 $ stack [
+  sound (samples "nostkick*4 ~ " (run 8)),
+  sound (samples "nostsns*8" (every 3 (fast 3) $ every 4 (fast 5 ) $ slow 2 $ run 10)), -- # speed " 1 1.2 1.4 1.2 1.33 1.42 1.23 1.7",
+  sound "bass3:3*4? ~" # speed  "0.82 4 3 4  2"
+] # cutoff 1900
+
+hush
+
+
+d1 $ sound "baegu/4" # unit "c" # speed 0.25
+
+d1 $ sound (samples "baeg" (irand 5)) # room 0.4
+
+---------------------------------------------------------------------------------------------------------------
+
+
+
+d1 $ every 4 (# accelerate (-1)) $ sound (samples "bjoo" (irand 7))
+# room 0.5
+# hresonance 0.8
+
+
+-----------------------------------------------------------------------------------------------------------------
+hush
+
+d4 $ stack [
+  sound (samples "splicedbb*8" (every 4 (fast 2) $ slow 5 $ run 15)) # room 0.2,
+  sound (samples "birds3*3 ~ birds3*3 ~ birds3" (every 4 (fast 2) $ slow 5 $ run 10)) # cut 4 # gain 1.1 # room 0.5,
+  sound "[[splicedbb:0*8] ~ ~ ~ ~ ~ ~ ~]/8?" # crush 4 # gain 1 # shape 0.8,
+  --sound "~ ~ [hh*3 [hh hh]] ~ hh [hh ~ hh ~] hh*4" # speed 0.7 # crush 3 # shape 0.2,
+  sound "dr2:2/3 ~ dr2:2 ~ " # crush 9 # gain 1 # speed 1.2
+]
+
+t4 (clutchIn 4) $ every 8 (brak) $ stack [
+slowcat [
+  sound (samples "amencutup*16" (run 32)),
+  sound (samples "amencutup*16" (run 20))]
+  -- every 4 (|-| speed 0.7) $ sound "bass3*4??" # gain 0.8 # speed " 2 2 1 0.9"
+]
+
+hush
+
+
+d1 $ sound "[gabbalouder*9]/12"
+
+
+----------------------------------------------------------------------------------
+d2 $ slow 2 $ every 4 (rev) $ every 4 (|-| speed 0.7) $ striate' 32 0.1 $ sound "hmm*16"
+|=| speed "{3 ~ 4 ~ 5 ~ ~ 0.4 ~ 3 ~ ~ 9 ~ 10 ~ 11 4 0.4 12 13, 1 2 3 4}"
+|=| room 0.1
+|=| gain 0.6
+|=| pan " 0.1 0 0 1 1 0.4 3 2"
+|=| resonance 4
+-- |=| cutoff 800
+----------------------------------------------------------------------------------
+
+  d2 silence
+
+hush
+
+d3 $ fast 2 $ randcat [
+  n ( "[a3 c3 e3] [d3, fs3, a3]" + "<6 2>") # s "superzow",
+  n ( "[f3, a3, c3]  [c3, e3, g3]" + "<12 7>" ) # s "superzow",
+  every 2 (rev) $ n " a5 c4 e4 d4 fs5 a5 e5" # s "superzow"
+] # room 0.4 # gain 0.5  # accelerate (0)
+|=| hresonance 1000
+|=| legato "0.6 0.3 0.9 1 2 0.9"
+
+d3 $ slow 2 $ every 8 (|+| hresonance 2) $ slow 2 $ slowcat [
+  n "b3(2, 3) d3 fs3 <11 4>" # s "supersquare",
+  n "d3 fs3 a3" # s "supersquare",
+  n "fs3 a3 cs3" # s "supersquare",
+  every 1 (# accelerate (-0.9)) $ n "a3 cs3 e3" # s "supersquare"
+] # room 0.4 # gain 0.8 # nudge "[0, 0.02]*8" # sustain 2
+|=| hcutoff 300
+
+-- |=| hresonance 0
+
+ d3 $ whenmod 9 2 (# speed "1 2.2 1.4 0.8 1.4 1.3 0.8" ) $ jux (iter 4) $ sound (samples "uxay*4" (every 7 (fast 2 ) $ run 32))
+ # room 0.4 # gain 1-- # hcutoff 500
+ -- # crush 6
+ |=| speed 1
+ -- #cutoff 1000
+
+
+
+
+ d5 $ randcat [
+   n "[d3 fs3 a3 ~] ~ " # s "superzow",
+   n " a3 a2" # s "superzow" # crush 3,
+   n "~  [fs4 d4 bs4] ~" # s "superzow"
+] # room 0.5 # nudge "[0 0.07]*7"
+
+ d5 silence
+
+ hush
+
+
+ --------------------------------------------------------------------------------------------------
+ d3 $ every 17 (striate' 16 0.5) $ every 4 (rev) $ fast 2 $  slowcat [
+    stack [
+      sound " ~ nostkick*2 sf*2",
+      sound (samples "nostmix*4" (irand 32))
+    ],
+    stack[
+      sound "nosthat:3*10" # speed 0.9,
+      sound "nostmix:4" # speed 0.3,
+      sound "~ ~ gabba(2, 3) ~ bass2:4"
+    ],
+    stack[
+      sound "sf*7" # accelerate 1,
+      sound "bd:1*5"
+    ],
+    stack[
+      sound (samples "amencutup*8" (irand 32)) -- # cut 0.1
+    ]
+ ] |=| cutoff 2000
+
+hush
+ --------------------------------------------------------------------------------------------------
+
+d4 $ every 4 (|+| speed "1.2 0.8" ) $ slowcat [
+  sound "sf sf ~ ~ ~ bass",
+  sound "sf(2, 8) bass"
+]
+|=| speed 1
+
+d3 $ stack [
+  sound "gabba?" # speed 0.3
+]
+
+
+d1 $ sound "rave:5/4" # gain 1.8 # room 0.5 # speed 0.4
+
+cps(1)
+
+hush
+
+d4 $ slow 3 $ every 4 (rev) $ sound (samples "baben*6" (every 8 (fast 6) $ run 6))
+
+# room 0.4 # speed 1 # gain 1.2
+
+d3 $ sound "drops/8" # gain 0.6
+
+
+d1 silence
+
+d4 $ every 7 (# accelerate (-2)) $ every 8 (jux (striate' 32 0.02)) $ slow 2 $ sound (samples "baben*4" (run 4))
+ # room 0.3 # speed "1 1 1 1.2" -- # vowel "i"
+
+
+d1 $ sound "paul/20" # unit "c" # speed 0.05 # accelerate (-2)
+
+d4 $ slow 3 $ every 3 (rev) $ sound (samples "baben1*6" (every 3 (fast 2) $ run 6))
+# room 0.5 # delay 0.4 # vowel "a" # gain 1.3 # speed "1.2 1 1 0.9 1 1"
+
+
+
+hush

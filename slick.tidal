@@ -1,0 +1,92 @@
+d2 $ randcat[
+  stack [
+    sound (samples "hardcore*8" (irand 10)),
+    sound "808(7, 17)",
+    sound (samples "hardcore*8" (irand 10))
+  ],
+  stack [
+    sound (samples "gabba*6" (irand 10)) # crush 9 # legato 2
+  ],
+  stack [
+    sound (samples "peri*7" (run 10)),
+    sound (samples "hardkick(6, 9)" (irand 6)) # cutoff 1000,
+    sound "drops"
+  ]
+] # cutoff 1500
+
+d1 silence
+
+d1 $ sound (samples "drops*8" (irand 5)) # cut 1
+
+hush
+
+d3 $ slowspread ($) [(|+| accelerate "-1 1"), (|+| coarse "16 12 3"), chop 12] $ slow 8 $ striate' 4 0.4 $ sound "anton*8" # cut 4 # hcutoff 800
+
+d1 $ sound (samples "wind*9" (irand 10)) # cutoff 800 # speed 1.8
+
+--(|+| coarse "16 12 3"),
+
+d4 $ slowspread ($) [(|+| accelerate "-1 1"), chop 12] $ slowcat [
+        sound (samples "sine*8" (irand 2)) # speed "1 2 3 4 2 1 2 2 3 4 2 1 1 1 8 3",
+        sound (samples "sine*8" (irand 2)) # speed "12 20 3 5 7 8 4 1 1 0.8 0.9 0.6 3",
+        sound (samples "sine*8" (irand 2)) # speed "1 2 3 4 2 12 9 8 7 41 8 3",
+        sound (samples "sine*8" (irand 2)) # speed "0.71 0.82 0.63 0.54 0.42 0.412 0.6 90 80 70 41 8 3"
+] # gain 1.4 # legato 2 # room 0.7 # hcutoff 1600
+
+d4 $ slowcat [
+        sound (samples "sine*8" (irand 2)) # speed "1 2 3 4 2 1 2 2 3 4 2 1 1 1 8 3",
+        sound (samples "sine*8" (irand 2)) # speed "12 9 3 5 7 8 4 1 1 0.8 0.9 0.6 3",
+        sound (samples "sine*8" (irand 2)) # speed "1 2 3 4 2 12 9 8 7 12 8 3",
+        sound (samples "sine*8" (irand 2)) # speed "0.71 0.82 0.63 0.54 0.42 0.412 0.6 90 80 70 41 8 3"
+] # gain 1.4 # legato 2 # room 0.7 # hcutoff 1600
+|=| pan " 0 1 0 1 0 1 0 0 0 1 0 1 0 0 1 0 1 0.5 0.3"
+
+hush
+
+d2 $ whenmod 4 19 (rev) $ every 4 (|+| accelerate 2) $ every 3 (|+| coarse 7) $ every 4 (0.25 <~) $ randcat [
+  sound (samples "drum*8" (irand 8)) # cut 1 # gain 1.2,
+  sound (samples "drops? gabba*4" (irand 4)) # room 0.7 # speed 2,
+  sound "happ, nostmix*4" # room 1 # speed (1) # sustain 2,
+  degrade $ sound "gabba*8" # speed "1 4 7 3 2 4",
+  sound (samples "gabba*3 sd:0(3,8)" (irand 10)) ,
+  stack [
+    sound (samples "drum*8" (irand 8)) # cut 1 # gain 1.2,
+    sound (samples "drops?" (irand 4)) # room 0.7 # speed (irand 6),
+    sound "happ/8" # room 1 # speed (-1) # sustain 2
+  ],
+  stack [
+    sound (samples "nostmix*8" (irand 38)) # cut 1 # gain 1.2,
+    sound (samples "drops?" (irand 4)) # room 0.7 # speed (irand 6),
+    sound "happ/8" # room 1 # speed (-1) # sustain 2
+  ]
+]
+|=| gain 1.2
+|=| accelerate 0
+|=| coarse 0
+
+d2 $ stack [
+    sound (samples "drum*8" (irand 8)) # cut 1 # gain 1.2,
+    sound (samples "drops?" (irand 4)) # room 0.7 # speed 2,
+    sound "happ/8" # room 1 # speed (-1) # sustain 2
+  ]
+
+hush
+
+d1 $ sound "spat:0/2" # unit "c" # speed 0.5
+|=| room 0.9
+|=| gain 1.2
+
+d1 $ slow 2 $ sound "trncoo/2 drops trncoo" # cut 2 # speed " 2 0.3 0.4  0.7 4 "
+
+
+
+d1 $ slowspread ($) [(|+| accelerate "-1 1"), (|+| coarse "16 12 3")] $ sound "trncoo/2"
+# room 1 # cut 2 # gain 1.2
+
+d1 $ slowspread ($) [(|+| accelerate "1.2")]  $ sound "fone/2" # unit "c"
+# speed 0.5
+# gain 1.1
+
+cps 1
+
+hush

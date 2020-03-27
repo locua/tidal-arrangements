@@ -1,0 +1,26 @@
+
+cps (130/60/4)
+
+d1 $ sound "{bd:9 bd:9 sd:4 cp sd:7, bass3 ~ ~ bass3 bd}"
+
+d1 $ sound (samples "drum*4" (every 4 (fast 2) $ run 4)) -- # crush 9
+
+d1 silence
+
+d4 silence
+
+d2 $ slow 20 $ sound (samples "notes*200" (every 3 (fast 8) $ every 4 (fast 4) $ run 100))
+# speed (scale (0.8) 1 $ slow 20 $ sine)
+# pan "0 1 1 0 1 0  1 0 1 0  1 0 1"
+
+hush
+
+
+d3 $ sound "hh hh:8 hh hh ~ hh hh hh ~ hh*6" # speed (slow 4 $ scale 2 8 sine )
+
+
+d4 $ every 5 (rev) (sound (samples "glitch*20" (run 3)))
+
+hush
+
+d5 $ slow 2 $ sound (samples "bubble*12" ( run 8))

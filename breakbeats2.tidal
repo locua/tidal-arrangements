@@ -1,0 +1,18 @@
+bps 2
+
+d1 $ every 8 (rev) $ striate 128 (sound "breaks165")
+
+d2 $ stack [
+  sound "hardkick*4",
+  sound (samples "industrial/2" (irand 20)) # speed 0.4
+] # gain 1
+
+hush
+
+d1 $ every 2 (linger 0.25) $ every 4 (smash 3 [2, 3, 4] ) ( loopAt 2 $ chop 6 $ sound "breaks165" )
+
+d1 $ spread ($) [fast 2, rev, slow 2, striate' 8 2, (# speed 0.8)]
+   $ stack [
+    sound "[bd*2 [~ bd]] [sn future]*2 cp jvbass*4",
+    sound " hh hh ~ hh ~ hh hh hh*3 hh ~ ~"
+]
