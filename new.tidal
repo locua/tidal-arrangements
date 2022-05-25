@@ -1,0 +1,81 @@
+d1 $ s "bd hh bd hh" # speed "1 2 3 4"
+
+d2 silence
+
+d2 $ slow 4 $ every 4 (rev) $ every 1 (0.77 <~) $ stack [
+  sound (samples "numbers*3" (irand 9)) # speed 1,
+  sound (samples "numbers*5" (run 8)) # speed 1.3,
+  sound "numbers:1 numbers:2" # speed 0.77,
+  n "1 2 3 4" # sound "numbers",
+  sound (samples "numbers*8" (irand 9)) # speed 1.5
+] # gain 1.2 # coarse 1
+
+d1 $ s "bjoo:2*2 ~ ~" # room "1"
+
+d2 $ s "~ bjoo:3 sn"
+
+d3 $ slow 2 $ s "trump" # room 1 # gain 0.8
+
+d3 silence
+
+hush
+
+d6 $ slow 3 $ every 4 (rev) $ sound (samples "baben*6" (every 8 (fast 6) $ run 6)) # room 0.9 # cutoff 1000
+
+d6 silence
+
+d6 $ every 7 (# accelerate (-2)) $ every 8 (jux (striate' 32 0.02)) $ slow 2 $ sound (samples "baben*4" (run 4))
+ # room 0.3 # speed "1 1 1 1.2" -- # vowel "i"
+
+ 
+d6 $ every 7 (# accelerate (-2)) $ every 8 (jux (striate' 32 0.02)) $ slow 2 $ sound (samples "poly:3" (run 1))
+ # room 0.3 # speed "2" -- "1 1 1 1.2" -- # vowel "i"
+
+drawLine "a b*2 d"
+
+d1 $ slow 4 $ s "poly:3" 
+
+d1 silence
+
+once $ s "trump gabba*4" # room 1 # cutoff 2000
+
+once $ s "trump:4"
+
+hush
+
+d2 $ slowspread ($) [(|+| accelerate "-2 2"), (|+| coarse "16 12 3")] $ sound "poly/2"
+# room 1 # cut 2 # gain 1.1 # speed 1 # cutoff 1000 # resonance 300
+
+d2 $ slow 3 $ (|-| accelerate 1) $ sound "poly:2"
+
+----- WIlllll ----
+d1 $ every 4 (rev) $
+  stack [
+    sound (samples "notes*10" (run 10)),
+    sound (samples "drum newnotes*2 drumcut*3 bd" (run 0)) # speed "4 5 1 6 3 2 3"
+  ] # coarse 8 # room 0.9 # cutoff 2000
+
+
+d1 $ n (slow 4 $ fmap (*7) $ run 8) 
+  # s "poly" 
+  # voice "[0.5 0]/8" 
+  -- # decay "[1 0.2]/4" 
+
+d1 $ n (slow 8) # s "poly"
+
+d4 $ slow 3 $ every 3 (rev) $ sound "poly:2" # gain 1.1 # resonance 4000
+
+d2 $ slow 2 $ every 3 (rev) $ stack [
+  sound "pluck gabba:3 pluck gabba:3 sd" # speed 1.3 # cut 1,
+  sound "newnotes ~ stab",
+  sound "tabla ~ tabla ~ ~",
+  sound (samples "mouth*8" (run 8)),
+  sound "rave:3/3",
+  sound (samples " ~ ~  ~ ~ ~ sd*5" (run 8))
+] # speed "[[1 0.8], [1.5 2]*2]/3"
+
+d1 $ slow 8 $ sound "poly:1" # gain 1.2 # room 1.3
+
+d3 silence
+
+d3 $ slow 2 $ sound (samples "pluck*17" (run 17)) # speed 1.3 # gain 1.1

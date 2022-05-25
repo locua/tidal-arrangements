@@ -31,16 +31,21 @@ d1 $ spread ($) [rev, slow 2, striate 16, (# speed 0.8), (# coarse 3)]
 
 d1 silence
 
-d2 $ n "2 3 4 3" # sound "rave" # legato 1
+d2 $ n "2 3 4 3" # sound "rave" # legato 1 # cutoff 1000 # gain 0.3
 
+hush
+
+----- WIlllll ----
 d1 $ every 4 (rev) $
   stack [
     sound (samples "notes*10" (run 10)),
-    sound "bd newnotes*6" # speed (slow 1 $ scale 1 90 sine1)
-  ] -- # coarse 30
+    sound (samples "drum newnotes*2 bjoo:5*3 bjoo" (run 0)) # speed "4 5 1 6 3 2 3"
+  ] # coarse 1 # room 0.9
+
+d1 silence
 
 d4 $ every 4 (rev) $ stack [
-  sound (samples "industrial*10/2" (run 20)),
+  sound (samples "industrial*3" (run 20)),
   sound "[~ hh ~ ~ [hh hh hh], sn:8, hh]/3" # speed 3,
   sound "hoover/3" # speed 0.4 # room 0.3,
   sound "[gabba*2 sn:7 gabba:8] gabba gabba gabba"

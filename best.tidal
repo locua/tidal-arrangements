@@ -52,12 +52,14 @@ d5 $ slow 6
 d2 $ sound "anton/4" # cut 4 # hcutoff 500
 -----------------------------------------------------------------------------------------------------------------------
 
-d4 $ slowspread ($) [(|+| accelerate "-1 1"), (|+| coarse "16 12 3"), chop 12] $ slowcat [
+d1 $ slowspread ($) [(|+| accelerate "-1 1"), (|+| coarse "16 12 3"), chop 12] $ slowcat [
         sound (samples "sine*8" (irand 2)) # speed "1 2 3 4 2 1 2 2 3 4 2 1 1 1 8 3",
         sound (samples "sine*8" (irand 2)) # speed "12 20 3 5 7 8 4 1 1 0.8 0.9 0.6 3",
         sound (samples "sine*8" (irand 2)) # speed "1 2 3 4 2 12 9 8 7 41 8 3",
         sound (samples "sine*8" (irand 2)) # speed "0.71 0.82 0.63 0.54 0.42 0.412 0.6 90 80 70 41 8 3"
 ] # gain 1.4 # legato 2 # room 0.7 # hcutoff 1600
+
+hush
 
 d4 silence
 
@@ -110,7 +112,7 @@ $ randcat [
 
 hush
 
-d1 $ every 4 (striate' 32 0.05) $ sound "bd sn sn sn" # room 1
+d1 $ every 4 (striate' 32 0.05) $ sound "bd bjoo sn bjoo" # room 1
 
 d2 $ n "ds3" # s "supercomparator"
 
@@ -348,9 +350,9 @@ d1 $ sound (samples "baeg" (irand 5)) # room 0.4
 
 ---------------------------------------------------------------------------------------------------------------
 
+hush
 
-
-d1 $ every 4 (# accelerate (-1)) $ sound (samples "bjoo" (irand 7))
+d1 $ every 4 (# accelerate (-1)) $ sound (samples "bd" (irand 7))
 # room 0.5
 # hresonance 0.8
 
@@ -376,11 +378,13 @@ slowcat [
 hush
 
 
-d1 $ sound "[gabbalouder*9]/12"
+d1 $ sound "[gabbalouder*3]/12" # speed 0.1
+
+d2 $ sound "gabbalouder" # speed 0.9 # room 0.3 # cutoff 990
 
 
 ----------------------------------------------------------------------------------
-d2 $ slow 2 $ every 4 (rev) $ every 4 (|-| speed 0.7) $ striate' 32 0.1 $ sound "hmm*16"
+d1 $ slow 2 $ every 4 (rev) $ every 4 (|-| speed 0.7) $ striate' 32 0.1 $ sound "hmm*16"
 |=| speed "{3 ~ 4 ~ 5 ~ ~ 0.4 ~ 3 ~ ~ 9 ~ 10 ~ 11 4 0.4 12 13, 1 2 3 4}"
 |=| room 0.1
 |=| gain 0.6
@@ -401,7 +405,7 @@ d3 $ fast 2 $ randcat [
 |=| hresonance 1000
 |=| legato "0.6 0.3 0.9 1 2 0.9"
 
-d3 $ slow 2 $ every 8 (|+| hresonance 2) $ slow 2 $ slowcat [
+d1 $ slow 2 $ every 8 (|+| hresonance 2) $ slow 2 $ slowcat [
   n "b3(2, 3) d3 fs3 <11 4>" # s "supersquare",
   n "d3 fs3 a3" # s "supersquare",
   n "fs3 a3 cs3" # s "supersquare",
@@ -420,7 +424,7 @@ d3 $ slow 2 $ every 8 (|+| hresonance 2) $ slow 2 $ slowcat [
 
 
 
- d5 $ randcat [
+d1 $ randcat [
    n "[d3 fs3 a3 ~] ~ " # s "superzow",
    n " a3 a2" # s "superzow" # crush 3,
    n "~  [fs4 d4 bs4] ~" # s "superzow"
@@ -471,7 +475,7 @@ cps(1)
 
 hush
 
-d4 $ slow 3 $ every 4 (rev) $ sound (samples "baben*6" (every 8 (fast 6) $ run 6))
+d4 $ slow 3 $ every 4 (rev) $ sound (samples "baben*6" (every 8 (fast 6) $ run 6)) # room 0.9 # cutoff 1000
 
 # room 0.4 # speed 1 # gain 1.2
 
@@ -483,6 +487,7 @@ d1 silence
 d4 $ every 7 (# accelerate (-2)) $ every 8 (jux (striate' 32 0.02)) $ slow 2 $ sound (samples "baben*4" (run 4))
  # room 0.3 # speed "1 1 1 1.2" -- # vowel "i"
 
+hush
 
 d1 $ sound "paul/20" # unit "c" # speed 0.05 # accelerate (-2)
 
