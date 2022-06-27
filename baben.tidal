@@ -31,6 +31,10 @@ d1 $ sound (samples "babenG/2" (irand 9))
 
 devices <- midiDevices
 
+d1 $ "bd"
+
+hush
+
 
 m1 <- midiStream devices "reface CP MIDI 1" 15 synthController
 
@@ -58,7 +62,7 @@ d1 $ sound "babenG:8/3" # speed 0.6 # gain 1.5 # accelerate (-0.5) # room 0.6
 d2 $ sound "gabba*4?" # speed 0.5
 
 
-d4 $ sound
+d1 $ sound "bd sn" # speed 0.1 # gain 1.5
 
 hush
 

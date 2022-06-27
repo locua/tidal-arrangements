@@ -45,7 +45,7 @@ d5 $ slow 6
    $ every 2 (rev)
    $ slowcat [
   striate' 32 (1/16) (sound "anton:0"),
-  striate' 32 (1/16) (sound "anton:1") # vowel "a e i o u",
+  striate' 32 (1/16) (sound "poly:1") # vowel "a e i o u",
   sound (samples "drumcut*32" (every 4 (fast 2) $ fast 8 $ run 64))
 ] -- # hcutoff (scale 1000 2000 sine1 * tri) # room 0.1 -- # crush 5
 

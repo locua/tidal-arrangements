@@ -43,7 +43,7 @@ d4 $ slowcat [
 
 hush
 
-d2 $ whenmod 4 19 (rev) $ every 4 (|+| accelerate 2) $ every 3 (|+| coarse 7) $ every 4 (0.25 <~) $ randcat [
+d1 $ whenmod 4 19 (rev) $ every 4 (|+| accelerate 2) $ every 3 (|+| coarse 7) $ every 4 (0.25 <~) $ randcat [
   sound (samples "drum*8" (irand 8)) # cut 1 # gain 1.2,
   sound (samples "drops? gabba*4" (irand 4)) # room 0.7 # speed 2,
   sound "happ, nostmix*4" # room 1 # speed (1) # sustain 2,
@@ -78,7 +78,7 @@ d1 $ sound "spat:0/2" # unit "c" # speed 0.5
 
 d1 $ slow 2 $ sound "trncoo/2 drops trncoo" # cut 2 # speed " 2 0.3 0.4  0.7 4 "
 
-
+hush
 
 d1 $ slowspread ($) [(|+| accelerate "-1 1"), (|+| coarse "16 12 3")] $ sound "trncoo/2"
 # room 1 # cut 2 # gain 1.2
